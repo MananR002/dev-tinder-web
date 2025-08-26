@@ -8,6 +8,7 @@ import { baseURL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("dhoni@gmail.com");
   const [password, setPassword] = useState("Dhoni@123");
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -22,8 +23,10 @@ const Login = () => {
         { withCredentials: true } //to set the token in cookies of browser, if we don't write this it will not set it
       );
       dispatch(addUser(res.data));
-      return navigate("/feed");
+      navigate("/");
+      return;
     } catch (error) {
+      setErrorMessage(error?.response?.data || "Something went wrong!!!");
       console.error(error.message);
     }
   };
@@ -48,6 +51,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
+          <p className="text-red-500">{errorMessage}</p>
 
           <div className="card-actions  justify-center m-2">
             <button onClick={handleLogin} className="btn btn-primary">
