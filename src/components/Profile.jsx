@@ -1,11 +1,10 @@
 import { memo } from "react";
+import EditProfile from "./EditProfile";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-  return (
-    <div className="Profile">
-      <h2>Profile</h2>
-    </div>
-  );
+  const user = useSelector((store) => store.user);
+  return user && <EditProfile user={user} />;
 };
 
 export default memo(Profile);

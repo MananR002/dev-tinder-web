@@ -2,7 +2,7 @@ import { memo } from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-300 text-neutral-content p-10 fixed bottom-0">
+    <footer className="footer sm:footer-horizontal bg-base-300 text-neutral-content p-6 fixed ">
       <aside>
         <svg
           width="50"
